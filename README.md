@@ -1,14 +1,8 @@
-# accredify-project
+# Pokemon Pokedex search app
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a simple pokedex search app made using Vue3 , Vue Router and Axios to GET relevant data from https://pokeapi.co/api/v2/*
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
