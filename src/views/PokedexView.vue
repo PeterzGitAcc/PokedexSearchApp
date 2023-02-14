@@ -25,7 +25,18 @@ export default {
             rName: '',
             is_data_fetched: false,
             spritePath: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
+            pokeInfo: 'https://pokeapi.co/api/v2/pokemon/',
+            pokeStats: [],
+            abilities: [],
+
         }
+    },
+    methods:{
+      pokemonInfo(pokemonNumber){
+        axios.get(this.pokeInfo + pokemonNumber).then(
+          response => {this.pokeStats = response.data.stats;this.abilities = response.data.abilities }
+        ).catch(error => console.log(error))
+      },
     },
     mounted () {
     axios.get('https://pokeapi.co/api/v2/pokedex/2/')
@@ -35,6 +46,7 @@ export default {
     components: {
         SearchBarComponent,
     },
+
 
 };
 </script>
