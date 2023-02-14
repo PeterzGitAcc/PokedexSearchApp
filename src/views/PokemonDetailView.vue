@@ -1,11 +1,18 @@
 <template>
-
+<div>
+  <!-- Update this value to display pokemon name  -->
+  <h1> {{destinationId}} details</h1>
+</div>
 </template>
-
 <script>
-
+export default {
+  computed:{
+    destinationId(){
+      return this.$route.params.id
+    }
+  }
+}
 </script>
-
 <style scoped>
 .wrapper {
   display: grid;

@@ -1,10 +1,10 @@
 <template>
     <h1>{{rName}}</h1>
     <div>
-      <SearchBarComponent v-if="is_data_fetched" :pokemon-search-data="pokemonEntries"  :sprites="spritePath"/>
+      <SearchBarComponent v-if="is_data_fetched" :pokemon-search-data="pokemonEntries"  :sprites="spritePath" @result-details ="details"/>
     </div>
     <div class="wrapper">
-<div v-for="poke in pokemonEntries" :key="poke.entry_number" class="card">
+<div v-for="poke in pokemonEntries" :key="poke.entry_number" class="card" @click="details(poke.pokemon_species.name)" >
 <p>{{poke.entry_number}}.{{poke.pokemon_species.name}}</p>
 <img :src="spritePath + poke.entry_number + '.png'" alt="pokemon sprite" />
 </div>
@@ -16,6 +16,7 @@
 // https://pokeapi.co/docs/v2
 import axios from 'axios';
 import SearchBarComponent from '../components/SearchBarComponent.vue';
+import router from '../router';
 export default {
     name: "PokedexView",
     data(){
@@ -37,6 +38,9 @@ export default {
           response => {this.pokeStats = response.data.stats;this.abilities = response.data.abilities }
         ).catch(error => console.log(error))
       },
+      details(pokemonName){
+        router.push(`/pokemon/${pokemonName}`)
+      }
     },
     mounted () {
     axios.get('https://pokeapi.co/api/v2/pokedex/2/')

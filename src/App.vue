@@ -5,7 +5,6 @@
 
 </header>
   <body>
-    <PokedexView />
   </body>
   <footer></footer>
 </template>

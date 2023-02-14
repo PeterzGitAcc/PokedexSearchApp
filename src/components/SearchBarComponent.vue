@@ -1,7 +1,7 @@
 <template>
   <input type="text" v-model="search" placeholder="Search Pokemon" />
   <div v-if="search && filteredList.length" class="wrapperSearch">
-  <div  v-for="poke in filteredList" :key="poke.entry_number" class="card">
+  <div  v-for="poke in filteredList" :key="poke.entry_number" class="card" @click="getDetails(poke.pokemon_species.name)">
     <p>{{poke.entry_number}}.{{poke.pokemon_species.name}}</p>
 <img :src="spritePath + poke.entry_number + '.png'" alt="pokemon sprite" />
   </div>
@@ -30,6 +30,12 @@ export default {
       );
     },
   },
+  emits: ['resultDetails'],
+  methods:{
+    getDetails(pokemonName){
+      this.$emit('resultDetails',pokemonName)
+    }
+  }
 };
 </script>
 <style>
