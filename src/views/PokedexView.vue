@@ -4,7 +4,7 @@
       <SearchBarComponent v-if="is_data_fetched" :pokemon-search-data="pokemonEntries"  :sprites="spritePath" @result-details ="details"/>
     </div>
     <div class="wrapper">
-<div v-for="poke in pokemonEntries" :key="poke.entry_number" class="card" @click="details(poke.pokemon_species.name)" >
+<div v-for="poke in pokemonEntries" :key="poke.entry_number" class="card" @click="details(poke.entry_number)" >
 <p>{{poke.entry_number}}.{{poke.pokemon_species.name}}</p>
 <img :src="spritePath + poke.entry_number + '.png'" alt="pokemon sprite" />
 </div>
@@ -26,20 +26,12 @@ export default {
             rName: '',
             is_data_fetched: false,
             spritePath: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-            pokeInfo: 'https://pokeapi.co/api/v2/pokemon/',
-            pokeStats: [],
-            abilities: [],
-
         }
     },
     methods:{
-      pokemonInfo(pokemonNumber){
-        axios.get(this.pokeInfo + pokemonNumber).then(
-          response => {this.pokeStats = response.data.stats;this.abilities = response.data.abilities }
-        ).catch(error => console.log(error))
-      },
-      details(pokemonName){
-        router.push(`/pokemon/${pokemonName}`)
+      
+      details(pokemonNumber){
+        router.push({path: `/pokemon/${pokemonNumber}`})
       }
     },
     mounted () {
@@ -65,14 +57,14 @@ export default {
   margin: 0 auto;
 }
 
-.wrapperSearch {
+/* .wrapperSearch {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 1rem;
   max-width: 960px;
   margin: 0 auto;
   border-bottom: 2px black dotted;
-}
+} */
 
 .card {
   border: 3px solid;

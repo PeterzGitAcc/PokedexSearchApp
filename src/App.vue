@@ -2,11 +2,12 @@
   <header>
   <NavbarComponent></NavbarComponent>
   <router-view />
-
 </header>
   <body>
   </body>
-  <footer></footer>
+  <footer>
+
+  </footer>
 </template>
 
 <script>
