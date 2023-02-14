@@ -2,7 +2,9 @@
 
 This is a simple pokedex search app made using Vue3 , Vue Router and Axios to GET relevant data from https://pokeapi.co/api/v2/*
 
+Unit tests have also been implemented using JestJS
 
+## Design Considerations
 
 ## Project Setup
 
