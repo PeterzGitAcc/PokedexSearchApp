@@ -1,18 +1,22 @@
 <template>
   <input type="text" v-model="search" placeholder="Search Pokemon" />
   <div v-if="search && filteredList.length" class="wrapperSearch">
-  <div  v-for="poke in filteredList" :key="poke.entry_number" class="card" @click="getDetails(poke.entry_number)">
+  <!-- <div  v-for="poke in filteredList" :key="poke.entry_number" class="card" @click="getDetails(poke.entry_number)">
     <p>{{poke.entry_number}}.{{poke.pokemon_species.name}}</p>
 <img :src="spritePath + poke.entry_number + '.png'" alt="pokemon sprite" />
+  </div> -->
+  <div  v-for="poke in filteredList" :key="poke.entry_number" @click="getDetails(poke.entry_number)">
+    <PokemonCardView :pokemon-num="poke.entry_number"  :pokemon-name="poke.pokemon_species.name" :sprites="spritePath" @result-details ="details"/>
   </div>
 </div>
   <div v-if="search && !filteredList.length">
-    <p style="color:red">No results found!</p>
+    <h4 style="color:red">No results found!</h4>
   </div>
 
 </template>
 
 <script>
+import PokemonCardView from '../views/PokemonCardView.vue';
 export default {
   name: "SearchBarComponent",
   props: ["pokemonSearchData","sprites"],
@@ -35,7 +39,8 @@ export default {
     getDetails(pokemonNumber){
       this.$emit('resultDetails',pokemonNumber)
     }
-  }
+  },
+  components: {PokemonCardView,},
 };
 </script>
 <style>
@@ -90,7 +95,7 @@ input {
   margin: 0 auto;
   border-bottom: 3px red dotted;
 }
-
+/* 
 .card {
   border: 3px solid;
   border-radius: 0.5rem;
@@ -106,5 +111,5 @@ input {
 .card p:last-child {
   font-style: italic;
   font-size: 0.8rem;
-}
+} */
 </style>

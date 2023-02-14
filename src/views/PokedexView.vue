@@ -1,49 +1,71 @@
 <template>
-    <h1>{{rName}}</h1>
-    <div>
-      <SearchBarComponent v-if="is_data_fetched" :pokemon-search-data="pokemonEntries"  :sprites="spritePath" @result-details ="details"/>
-    </div>
-    <div class="wrapper">
-<div v-for="poke in pokemonEntries" :key="poke.entry_number" class="card" @click="details(poke.entry_number)" >
+  <h1>{{ rName }}</h1>
+  <div>
+    <SearchBarComponent
+      v-if="is_data_fetched"
+      :pokemon-search-data="pokemonEntries"
+      :sprites="spritePath"
+      @result-details="details"
+    />
+  </div>
+  <div class="wrapper">
+    <!-- <div v-for="poke in pokemonEntries" :key="poke.entry_number" class="card" @click="details(poke.entry_number)" >
 <p>{{poke.entry_number}}.{{poke.pokemon_species.name}}</p>
 <img :src="spritePath + poke.entry_number + '.png'" alt="pokemon sprite" />
-</div>
+</div> -->
+    <div
+      v-for="poke in pokemonEntries"
+      :key="poke.entry_number"
+      @click="details(poke.entry_number)"
+    >
+      <PokemonCardView
+        v-if="is_data_fetched"
+        :pokemon-num="poke.entry_number"
+        :pokemon-name="poke.pokemon_species.name"
+        :sprites="spritePath"
+        @result-details="details"
+      />
     </div>
-
+  </div>
 </template>
 
 <script>
-// https://pokeapi.co/docs/v2
-import axios from 'axios';
-import SearchBarComponent from '../components/SearchBarComponent.vue';
-import router from '../router';
+import axios from "axios";
+import SearchBarComponent from "../components/SearchBarComponent.vue";
+import PokemonCardView from "./PokemonCardView.vue";
+import router from "../router";
 export default {
-    name: "PokedexView",
-    data(){
-        return{
-            pokedexData: [],
-            pokemonEntries: [],
-            rName: '',
-            is_data_fetched: false,
-            spritePath: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/',
-        }
+  name: "PokedexView",
+  data() {
+    return {
+      pokedexData: [],
+      pokemonEntries: [],
+      rName: "",
+      is_data_fetched: false,
+      spritePath:
+        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/",
+    };
+  },
+  methods: {
+    details(pokemonNumber) {
+      router.push({ path: `/pokemon/${pokemonNumber}` });
     },
-    methods:{
-      
-      details(pokemonNumber){
-        router.push({path: `/pokemon/${pokemonNumber}`})
-      }
-    },
-    mounted () {
-    axios.get('https://pokeapi.co/api/v2/pokedex/2/')
-    .then(response=> {this.pokedexData = response.data; this.pokemonEntries = response.data.pokemon_entries;this.rName = response['data']['descriptions'][3]['description'];this.is_data_fetched = true;})
-    .catch(error => console.log(error))
-    },
-    components: {
-        SearchBarComponent,
-    },
-
-
+  },
+  mounted() {
+    axios
+      .get("https://pokeapi.co/api/v2/pokedex/2/")
+      .then((response) => {
+        this.pokedexData = response.data;
+        this.pokemonEntries = response.data.pokemon_entries;
+        this.rName = response["data"]["descriptions"][3]["description"];
+        this.is_data_fetched = true;
+      })
+      .catch((error) => console.log(error));
+  },
+  components: {
+    SearchBarComponent,
+    PokemonCardView,
+  },
 };
 </script>
 
@@ -65,7 +87,7 @@ export default {
   margin: 0 auto;
   border-bottom: 2px black dotted;
 } */
-
+/* 
 .card {
   border: 3px solid;
   border-radius: 0.5rem;
@@ -81,5 +103,5 @@ export default {
 .card p:last-child {
   font-style: italic;
   font-size: 0.8rem;
-}
+} */
 </style>

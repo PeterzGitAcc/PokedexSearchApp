@@ -2,26 +2,26 @@
   <div class="container">
     <h1>Pokemon Details</h1>
     <div class="row">
-        <h1>{{ pokemonNumber }}. {{ pokemonName }}</h1>
-        <img
-          :src="spritePath + this.pokemonNumber + '.png'"
-          alt="pokemon sprite"
-        />
-      </div>
-        <!-- Base stats -->
-        <div class="row">
-        <div  class="col-md-6" >
-          <h2>Base Stats</h2>
+      <h1>{{ pokemonNumber }}. {{ pokemonName }}</h1>
+      <img
+        :src="spritePath + this.pokemonNumber + '.png'"
+        alt="pokemon sprite"
+      />
+    </div>
+    <!-- Base stats -->
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Base Stats</h2>
 
-          <ul v-for="(statList, index) in baseStats" :key="index">
-            <li>
-              <h4>{{ statList.stat.name }} : {{ statList.base_stat }}</h4>
-            </li>
-            <li>Effort: {{ statList.effort }}</li>
-          </ul>
-        </div>
-      
-      <div class="col-md-6" >
+        <ul v-for="(statList, index) in baseStats" :key="index">
+          <li>
+            <h4>{{ statList.stat.name }} : {{ statList.base_stat }}</h4>
+          </li>
+          <li>Effort: {{ statList.effort }}</li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
         <h2>Abilities</h2>
         <ul v-for="(ability, index) in abilities" :key="index">
           <li>
@@ -39,6 +39,7 @@
 import axios from "axios";
 import NavbarComponent from "../components/NavbarComponent.vue";
 export default {
+  name: 'PokemonDetailView',
   data() {
     return {
       pokemonNumber: this.$route.params.id,
@@ -52,10 +53,6 @@ export default {
       spritePath:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/",
     };
-  },
-  computed: {},
-  spritePath() {
-    return this.$route.params.sprite;
   },
   mounted() {
     axios
@@ -85,7 +82,6 @@ export default {
       })
       .catch((error) => console.log(error));
   },
-  methods: {},
   components: {
     NavbarComponent,
   },
@@ -97,7 +93,7 @@ export default {
   height: auto;
 }
 
-h2{
+h2 {
   align-content: center;
 }
 
@@ -105,5 +101,4 @@ li {
   text-align: center;
   list-style: none;
 }
-
 </style>
