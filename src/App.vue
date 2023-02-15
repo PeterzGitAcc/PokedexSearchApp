@@ -11,6 +11,7 @@
 import NavbarComponent from "./components/NavbarComponent.vue";
 
 export default {
+  name: 'App',
   components: {
     NavbarComponent,
   },
@@ -19,7 +20,7 @@ export default {
 
 <style>
 header {
-  position: fixed;
+  position: relative;
   left: 0; /* top left corner should start at leftmost spot */
   top: 0; /* top left corner should start at topmost spot */
   width: 100vw; /* take up the full browser width */
