@@ -2,7 +2,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <RouterLink to="/">Pokemon Search app </RouterLink>
-
+  &nbsp;
+      &nbsp;
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">

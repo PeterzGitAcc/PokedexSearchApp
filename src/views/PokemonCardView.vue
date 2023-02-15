@@ -27,6 +27,10 @@ data(){
 </script>
 
 <style scoped>
+
+h2{
+  font-style: bold;
+}
 .card {
   border: 3px solid;
   border-radius: 0.5rem;
