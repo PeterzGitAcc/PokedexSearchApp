@@ -1,5 +1,5 @@
-import { shallowMount } from '@vue/test-utils'
-import PokedexView from '@/views/PokedexView.vue'
+import { mount } from '@vue/test-utils';
+import PokedexView from '@/views/PokedexView.vue';
 
 //Test components exist
 describe('PokedexView.vue' , () => {
@@ -7,7 +7,6 @@ describe('PokedexView.vue' , () => {
         const wrapper = mount(PokedexView)
     
         expect(wrapper.findComponent({name: "SearchBarComponent"}).exists()).toBe(true)
-        
 
     })
 })
