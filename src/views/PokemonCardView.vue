@@ -1,6 +1,6 @@
 <template>
   <div class="card" @click="getDetails(pokemonNumber)" >
-<p>{{pokemonNumber}}.{{pokemonName}}</p>
+<p>{{pokemonNumber}}.{{pokemonNameCard}}</p>
 <img :src="spritePath + pokemonNumber + '.png'" alt="pokemon sprite" />
 </div>
 </template>
@@ -13,7 +13,7 @@ emits: ['resultDetails'],
 data(){
     return{
     pokemonNumber: this.pokemonNum,
-    pokemonName: this.pokemonName,
+    pokemonNameCard: this.pokemonName,
     spritePath: this.sprites,
     }
 },
@@ -27,6 +27,10 @@ data(){
 </script>
 
 <style scoped>
+
+h2{
+  font-style: bold;
+}
 .card {
   border: 3px solid;
   border-radius: 0.5rem;

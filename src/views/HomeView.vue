@@ -18,9 +18,10 @@
     <br/>
   <h1>Technologies used</h1>
   <p>Axios</p>
+  <p>Bootstrap</p>
   <p>JestJS</p>
   <p>VueJS 3</p>
-  <p>Bootstrap</p>
+
   </div>
 </div>
 </template>

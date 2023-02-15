@@ -10,24 +10,26 @@
     </div>
     <!-- Base stats -->
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-6 d-flex flex-column justify-content-center">
         <h2>Base Stats</h2>
-
-        <ul v-for="(statList, index) in baseStats" :key="index">
-          <li>
-            <h4>{{ statList.stat.name }} : {{ statList.base_stat }}</h4>
-          </li>
-          <li>Effort: {{ statList.effort }}</li>
-        </ul>
+        <table class="table-responsive table-bordered">
+          <tr>
+            <th scope="col"><h4>Stat</h4></th>
+            <th scope="col"><h4>Effort</h4></th>
+          </tr>
+          <tr v-for="(statList, index) in baseStats" :key="index">
+            <td>{{ statList.stat.name }} : {{ statList.base_stat }}</td>
+            <td>{{ statList.effort }}</td>
+          </tr>
+        </table>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 d-flex flex-column justify-content-center">
         <h2>Abilities</h2>
-        <ul v-for="(ability, index) in abilities" :key="index">
-          <li>
-            <h4>{{ ability.ability.name }}</h4>
-          </li>
-        </ul>
+
+        <h4 v-for="(ability, index) in abilities" :key="index">
+          {{ ability.ability.name }} <br />
+        </h4>
         <br />
         <h2>Evolutions</h2>
         <h4>{{ pokemonEvoChain }}</h4>
@@ -39,7 +41,7 @@
 import axios from "axios";
 import NavbarComponent from "../components/NavbarComponent.vue";
 export default {
-  name: 'PokemonDetailView',
+  name: "PokemonDetailView",
   data() {
     return {
       pokemonNumber: this.$route.params.id,
@@ -95,10 +97,10 @@ export default {
 
 h2 {
   align-content: center;
+  color: goldenrod;
 }
 
-li {
-  text-align: center;
-  list-style: none;
+div{
+  margin-top: 10px;
 }
 </style>
