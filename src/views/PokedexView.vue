@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ rName }}</h1>
+  <h1>{{ versionName }}</h1>
   <div>
     <SearchBarComponent
       v-if="is_data_fetched"
@@ -40,7 +40,7 @@ export default {
     return {
       pokedexData: [],
       pokemonEntries: [],
-      rName: "",
+      versionName: "",
       is_data_fetched: false,
       spritePath:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/",
@@ -57,7 +57,7 @@ export default {
       .then((response) => {
         this.pokedexData = response.data;
         this.pokemonEntries = response.data.pokemon_entries;
-        this.rName = response["data"]["descriptions"][3]["description"];
+        this.versionName = response["data"]["descriptions"][3]["description"];
         this.is_data_fetched = true;
       })
       .catch((error) => console.log(error));
