@@ -9,10 +9,6 @@
     />
   </div>
   <div class="wrapper">
-    <!-- <div v-for="poke in pokemonEntries" :key="poke.entry_number" class="card" @click="details(poke.entry_number)" >
-<p>{{poke.entry_number}}.{{poke.pokemon_species.name}}</p>
-<img :src="spritePath + poke.entry_number + '.png'" alt="pokemon sprite" />
-</div> -->
     <div
       v-for="poke in pokemonEntries"
       :key="poke.entry_number"
@@ -47,8 +43,8 @@ export default {
     };
   },
   methods: {
-    details(pokemonNumber) {
-      router.push({ path: `/pokemon/${pokemonNumber}` });
+    details(pokemonId) {
+      router.push({ path: `/pokemon/${pokemonId}` });
     },
   },
   mounted() {
