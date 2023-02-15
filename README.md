@@ -15,6 +15,7 @@ Consistency and standards (Cards and pokedex gallery)
 Error prevention (no results found = warn user)
 
 Minimalist design (After user clicks on pokemon , details appear)
+
 ## Project Setup
 
 ```sh
@@ -32,3 +33,11 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## How to use
+
+- On the starting page , click on `pokedex`
+
+- In the `pokedex` page: 
+    - Click on the card to find out more
+    - Search for a pokemon and click on the card to find out more 
