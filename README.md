@@ -1,5 +1,7 @@
 # Pokemon Pokedex search app
 
+https://github.com/user-attachments/assets/9a0c995e-ff24-4e36-81d0-31cf044acc0f
+
 This is a simple pokedex search app made using Vue3 , Vue Router and Axios to GET relevant data from https://pokeapi.co/api/v2/*
 
 Axios automatically transforms the data returned from the server, parsng the data to a JavaScript object. The data response provided by the server can be accessed within the data object
